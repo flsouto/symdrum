@@ -1,0 +1,35 @@
+config.php
+    bkg_imgs => '...path...' // download imgs from remixerver
+    sym_wavs => '...'
+    drm_wavs => '...'
+
+mix.php -> load config
+php mod.php saved2 1 sym gain 5
+php switch.php saved2 1 sym
+
+    
+php mkosc.php saved2 1 drm
+    saved2/1_osc_drm/001.jpg etc...
+    (steal algorithm from remixerver)
+
+php mkosc.php saved2/1_sym.wav    
+    saved2/1_osc_sym/001.jpg etc...
+
+php reindex.php saved2/
+
+node mkframes.js saved2 1
+    mksymsolo()
+        add next from 1_osc_sym
+        add frame.jpg
+        add tracklistbox
+
+    mksymdrm()
+        add next from 1_osc_sym
+        add next from 1_osc_drm (margin x)
+        add tracklistbox
+            
+    saved2/frame.jpg
+    saved2/frames_1/001.jpg etc...
+
+php mkvid.php saved2 1 -> saved2/1_vid.mp4
+php concatv.php saved2 -> saved2/concat.mp4
