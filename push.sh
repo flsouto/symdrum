@@ -1,1 +1,1 @@
-git add -u && git add *.php && git commit -m "updates" && git push origin main
+git add -u && git add *.php && git add *.js && git commit -m "updates" && git push origin main
