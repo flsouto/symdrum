@@ -1,6 +1,3 @@
-php mod.php saved2 1 sym gain 5
-php switch.php saved2 1 sym
-    
 php mkosc.php saved2 1 drm
     saved2/1_osc_drm/001.jpg etc...
     (steal algorithm from remixerver)
