@@ -22,7 +22,7 @@ async function main(){
 
     const osc_sym_dir = dir + "/" + index + "_osc_sym/";
     const osc_drm_dir = dir + "/" + index + "_osc_drm/";
-    const margin = 50;
+    const margin = 80;
 
     for(const f of fs.readdirSync(osc_sym_dir)){
 
@@ -43,7 +43,7 @@ async function main(){
         const sym_img = await gd.openJpeg(sym_img_f);
 
         const box_dim = 720 - (margin*2);
-        const box_color = await gd.trueColorAlpha(0,0,0,15);
+        const box_color = await gd.trueColorAlpha(0,0,0,25);
         sym_img.copyResampled(drm_img, margin, margin, 0, 0, box_dim, box_dim, 1400, 1400);
         drm_img.filledRectangle(box_dim + margin, margin, box_dim + margin + box_dim, margin + box_dim, box_color);
 //        drm_img.copyResampled(box, box_dim + margin, margin, 0, 0, box_dim, box_dim, 1400, 1400);
