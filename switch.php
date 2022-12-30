@@ -27,7 +27,7 @@ if($type == 'sym'){
 
 $b = new Sampler($b);
 $ab = $b()->mix($a,false);
-$ab->save("$dir/{$index}_sym_drm.wav");
+$ab->save("$dir/{$index}_drm_sym.wav");
 
 if($type == 'sym'){
     $track = [$a, $ab, $b];

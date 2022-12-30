@@ -28,19 +28,41 @@ $out_dir = "$dir/{$index}_osc_{$type}/";
 if(!is_dir($out_dir)) mkdir($out_dir);
 shell_exec("rm $out_dir* 2>/dev/null");
 
+$avg = array_sum($amps) / count($amps);
+$last_c = 0;
+$mkcontrast = function($a) use($avg,&$last_c){
+    if($a >= $avg && $last_c != 1){
+        $c = 1;
+    } else {
+        $c = -mt_rand(15,30);
+    }
+    $last_c = $c;
+    return $c;
+};
+
 if($type == 'sym'){
+    $frames_out = ["$dir/sym.jpg"];
+} else {
     $frames_out = glob($config['bkg_imgs'],GLOB_BRACE);
     shuffle($frames_out);
-    $frames_out = array_slice($frames_out, 1, 1);
-} else {
-    $frames_out = ["$dir/drm.jpg"];
+    $frames_out = array_slice($frames_out, 1, mt_rand(5,10));
+    /*
+    $mkcontrast = function($amp){
+        $contrast = -30 + ($amp * 50);
+        return $contrast;
+    }; */
 }
 
+$last_img = '';
 foreach($amps as $a){
-    $contrast = -30 + ($a * 100);
+    $contrast = $mkcontrast($a);
+    echo "C=".$contrast."\n";
     $frame = str_pad("$i",3,"0",STR_PAD_LEFT);
     echo $frame.PHP_EOL;
-    $img = $frames_out[array_rand($frames_out)];
+    do {
+        $img = $frames_out[array_rand($frames_out)];
+    } while(count($frames_out) > 1 && $img == $last_img);
+    $last_img = $img;
     shell_exec("convert -brightness-contrast $contrast '$img' $out_dir/$frame.jpg");
     $i++;
 }
