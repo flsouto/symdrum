@@ -10,7 +10,6 @@ if(empty($argv[3])){
 $dir = $argv[1];
 $index = $argv[2];
 $len = $argv[3];
-
 $drm = new Sampler($drm_f="$dir/{$index}_drm.wav");
 $sym = new Sampler($sym_f="$dir/{$index}_sym.wav");
 

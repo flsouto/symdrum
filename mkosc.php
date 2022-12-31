@@ -12,8 +12,9 @@ $index = $argv[2];
 $type = $argv[3];
 
 $loop = new Sampler("$dir/{$index}_$type.wav");
-$loop->cut(0,'1/4');
-$fps = round(15 - $loop->len());
+//$loop->cut(0,'1/4');
+//$fps = round(15 - $loop->len());
+$fps = 10;
 $amps = [];
 
 $loop->each(1/$fps,function($s) use(&$amps){
@@ -22,7 +23,7 @@ $loop->each(1/$fps,function($s) use(&$amps){
     echo $amp.PHP_EOL;
 });
 
-$amps = [...$amps, ...$amps, ...$amps, ...$amps];
+//$amps = [...$amps, ...$amps, ...$amps, ...$amps];
 $i = 0;
 $out_dir = "$dir/{$index}_osc_{$type}/";
 if(!is_dir($out_dir)) mkdir($out_dir);
@@ -46,18 +47,13 @@ if($type == 'sym'){
     $frames_out = glob($config['bkg_imgs'],GLOB_BRACE);
     shuffle($frames_out);
     $frames_out = array_slice($frames_out, 1, mt_rand(5,10));
-    /*
-    $mkcontrast = function($amp){
-        $contrast = -30 + ($amp * 50);
-        return $contrast;
-    }; */
 }
 
 $last_img = '';
 foreach($amps as $a){
     $contrast = $mkcontrast($a);
     echo "C=".$contrast."\n";
-    $frame = str_pad("$i",3,"0",STR_PAD_LEFT);
+    $frame = str_pad("$i",4,"0",STR_PAD_LEFT);
     echo $frame.PHP_EOL;
     do {
         $img = $frames_out[array_rand($frames_out)];
