@@ -65,10 +65,11 @@ async function main(){
         for(let i=1;i<=wavs_flat.length;i++){
             const w = wavs_flat[i-1];
             const fc = w === hl_f ? fc1 : fc2;
+            const parts = wavs_flat[i-1].split('/');
             drm_img.stringFT(
                 fc, './font.ttf', fsz, 0,
                 box_offset_x + spc, box_offset_y + spc + ((fsz+spc)*i),
-                wavs_flat[i-1]
+                `flsouto@${parts[0]}:~$ play ` + parts[1]
             );
         }
 
