@@ -16,9 +16,11 @@ shuffle($drums);
 foreach($drums as $i => $f){
     echo $i."\n";
     $track = Sampler::silence(0);
+    $len = mt_rand(11,13);
     $drm = new Sampler($f);
+    $drm->resize($len);
     $sym = new Sampler(array_shift($syms));
-    $sym->resize($drm->len());
+    $sym->resize($len);
     $drm_sym = $drm()->mix($sym,false);
     $track = $sym()->add($drm_sym)->add($drm);
     $drm->save("$out_dir/{$i}_drm.wav");
