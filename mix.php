@@ -16,7 +16,7 @@ shuffle($drums);
 foreach($drums as $i => $f){
     echo $i."\n";
     $track = Sampler::silence(0);
-    $len = mt_rand(11,13);
+    $len = mt_rand(11,20);
     $drm = new Sampler($f);
     $drm->resize($len);
     $sym = new Sampler(array_shift($syms));
