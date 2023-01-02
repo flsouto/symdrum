@@ -50,10 +50,17 @@ foreach($tracks as $f){
     echo $line."\n";
 }
 
+$tags = [
+    "industrial","rythmic noise", "ambient","experimental","soundtrack","power noise", "beats". "drums","symphonic",
+    "samples", "loops", "wav", "pack", "download"
+];
+shuffle($tags);
+
 $desc = "#looppack #samplepack #audioproduction\n";
 $desc.= "Get all loops from: {bandcamp_ul}\n";
 $desc.= "tracklist:\n";
-$desc.= implode("\n", $tracklist);
+$desc.= implode("\n", $tracklist)."\n";
+$desc.= "Tags: ".implode("," $tags);
 
 file_put_contents($dir."desc.txt", $desc);
 
