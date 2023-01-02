@@ -2,6 +2,7 @@
 use FlSouto\Sampler;
 $config = require(__DIR__."/config.php");
 require_once($config['smp_path']);
+require_once(__DIR__."/Text.php");
 
 if(empty($argv[1])){
     die("Usage: cmd <dir>\n");
@@ -51,16 +52,21 @@ foreach($tracks as $f){
 }
 
 $tags = [
-    "industrial","rythmic noise", "ambient","experimental","soundtrack","power noise", "beats". "drums","symphonic",
+    "industrial","rhythmic noise", "ambient","experimental","soundtrack","power noise", "beats". "drums","symphonic",
     "samples", "loops", "wav", "pack", "download"
 ];
 shuffle($tags);
 
-$desc = "#looppack #samplepack #audioproduction\n";
-$desc.= "Get all loops from: {bandcamp_ul}\n";
-$desc.= "tracklist:\n";
-$desc.= implode("\n", $tracklist)."\n";
-$desc.= "Tags: ".implode("," $tags);
+$hashtags = ["#looppack","#samplepack","#audioproduction"];
+shuffle($hashtags);
+
+$dlhere = pick("{Download|Get} {everything|{the full|this} [{loop|audio|sample}] pack|each [individual] {file|sample}|all [individual] {files|samples|loops}} {here|from}:");
+
+$desc = implode(" ",$hashtags)."\n";
+$desc.= "$dlhere {bandcamp_ul}\n";
+$desc.= "Tracklist:\n";
+$desc.= implode("\n", $tracklist)."\n\n";
+$desc.= "Tags: ".implode(", ", $tags);
 
 file_put_contents($dir."desc.txt", $desc);
 
