@@ -14,7 +14,13 @@ $args = implode(' ',array_slice($argv,4));
 
 $target = "$dir/{$index}_$type.wav";
 $a = new Sampler($target);
-$a->mod($args);
+$len = $a->len();
+if(substr($args,0,2)=='->'){
+    eval('$a = $a'.$args.';');
+} else {
+    $a->mod($args);
+}
+$a->resize($len);
 $a->save($target);
 
 if($type == 'sym'){
