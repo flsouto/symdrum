@@ -60,8 +60,11 @@ shuffle($tags);
 $hashtags = ["#looppack","#samplepack","#audioproduction"];
 shuffle($hashtags);
 
-$dlhere = pick("{Download|Get} {everything|{the full|this} [{loop|audio|sample}] pack|each [individual] {file|sample}|all [individual] {files|samples|loops}} {here|from}:");
-
+for($i=1;$i<=100;$i++){
+    $dlhere = pick("{Download|Get} {everything|{the full|this} [{loop|audio|sample}] pack|each [individual] {file|sample}|all [individual] {files|samples|loops}} {here|from}:");
+    echo $dlhere."\n";
+}
+die();
 $desc = implode(" ",$hashtags)."\n";
 $desc.= "$dlhere {bandcamp_ul}\n";
 $desc.= "Tracklist:\n";
