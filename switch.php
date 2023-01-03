@@ -13,12 +13,6 @@ $type = $argv[3];
 
 $target = "$dir/{$index}_$type.wav";
 
-$a = new Sampler($target);
-$len = $a->len();
-$a = Sampler::select($config["{$type}_wavs"]);
-$a->resize($len);
-$a->save($target);
-
 if($type == 'sym'){
     $b = "$dir/{$index}_drm.wav";
 } else {
@@ -26,6 +20,11 @@ if($type == 'sym'){
 }
 
 $b = new Sampler($b);
+$len = $b->len();
+$a = Sampler::select($config["{$type}_wavs"]);
+$a->resize($len);
+$a->save($target);
+
 $ab = $b()->mix($a,false);
 $ab->save("$dir/{$index}_drm_sym.wav");
 

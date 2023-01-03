@@ -1,17 +1,23 @@
-node mkframes.js saved2 1
-    mksymsolo()
-        add next from 1_osc_sym
-        add frame.jpg
-        add tracklistbox
+imgen/   (new repo)
 
-    mksymdrm()
-        add next from 1_osc_sym
-        add next from 1_osc_drm (margin x)
-        add tracklistbox
+    db/
+        1200x720/
+        1400x1400/
+    tmp/
+        1200x720
+
+generate.php 1200x720 100
+reindex.php folder
+explore.php db/1400x1400
+
+    save_to: [db, symdrumii] -> if target contains 'tmp'
+        or
+    copy_to: [symdrumii] -> if target not contains 'tmp'
             
-    saved2/frame.jpg
-    saved2/frames_1/001.jpg etc...
-
-php reindex.php saved2/
-php mkvid.php saved2 1 -> saved2/1_vid.mp4
-php concatv.php saved2 -> saved2/concat.mp4
+    /show/path/to/img.jpg
+    -> s (save) -> if target contains 'tmp'
+    -> c (copy) -> if target not contains 'tmp'
+    -> d (discard)
+    -> f (forward)
+    -> b (backward)
+    

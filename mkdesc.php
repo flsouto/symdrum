@@ -52,7 +52,7 @@ foreach($tracks as $f){
 }
 
 $tags = [
-    "industrial","rhythmic noise", "ambient","experimental","soundtrack","power noise", "beats". "drums","symphonic",
+    "industrial","rhythmic noise", "ambient","experimental","soundtrack","power noise", "beats", "drums","symphonic",
     "samples", "loops", "wav", "pack", "download"
 ];
 shuffle($tags);
