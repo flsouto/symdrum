@@ -53,9 +53,10 @@ foreach($tracks as $f){
 
 $tags = [
     "industrial","rhythmic noise", "ambient","experimental","soundtrack","power noise", "beats", "drums","symphonic",
-    "samples", "loops", "wav", "pack", "download"
+    "samples", "loops", "wav", "pack", "download", "breakbeats", "samples"
 ];
 shuffle($tags);
+$tags = array_unique($tags);
 
 $hashtags = ["#looppack","#samplepack","#audioproduction"];
 shuffle($hashtags);

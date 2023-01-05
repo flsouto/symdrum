@@ -9,7 +9,6 @@ mkdir($out_dir,0777);
 
 $syms = glob($config['sym_wavs'],GLOB_BRACE);
 $drums = glob($config['drm_wavs'],GLOB_BRACE);
-
 shuffle($syms);
 shuffle($drums);
 
@@ -23,9 +22,10 @@ foreach($drums as $i => $f){
     $sym->resize($len);
     $drm_sym = $drm()->mix($sym,false);
     $track = $sym()->add($drm_sym)->add($drm);
-    $drm->save("$out_dir/{$i}_drm.wav");
-    $drm_sym->save("$out_dir/{$i}_drm_sym.wav");
-    $track->save("$out_dir/{$i}_track.wav");
-    $sym->save("$out_dir/{$i}_sym.wav");
+    $istr = str_pad($i,2,'0',STR_PAD_LEFT);
+    $drm->save("$out_dir/{$istr}_drm.wav");
+    $drm_sym->save("$out_dir/{$istr}_drm_sym.wav");
+    $track->save("$out_dir/{$istr}_track.wav");
+    $sym->save("$out_dir/{$istr}_sym.wav");
 }
 
