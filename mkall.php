@@ -17,3 +17,5 @@ $indexes = array_keys($indexes);
 foreach($indexes as $i){
     passthru("php mkfull.php $dir $i");
 }
+
+passthru("php concatv.php $dir && php mkdesc.php $dir");

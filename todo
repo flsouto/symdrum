@@ -1,23 +1,20 @@
-imgen/   (new repo)
-
-    db/
-        1200x720/
-        1400x1400/
-    tmp/
-        1200x720
-
-generate.php 1200x720 100
-reindex.php folder
-explore.php db/1400x1400
-
-    save_to: [db, symdrumii] -> if target contains 'tmp'
-        or
-    copy_to: [symdrumii] -> if target not contains 'tmp'
-            
-    /show/path/to/img.jpg
-    -> s (save) -> if target contains 'tmp'
-    -> c (copy) -> if target not contains 'tmp'
-    -> d (discard)
-    -> f (forward)
-    -> b (backward)
+remix
+    frames: alternate between back and front
+    $d/remixes/01.wav 02 03....
     
+addfx IDX TYPE: pitch -80 pitch -80 | chop end | blank end | reverse end
+
+undo IDX TYPE
+    modify mod & switch to create *.wav.bkp
+
+add bpm in desc tags etc...
+
+config => config.json
+
+config.php => read from config.json
+
+config => bpm (update scripts to read from config.bpm)
+
+
+
+

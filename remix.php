@@ -26,11 +26,11 @@ for($i=0;$i<4;$i++){
         $loop->mod('reverse');
     }
     if(mt_rand(0,1)){
-        $loop->chop(mt_rand(1,4));
+//        $loop->chop(mt_rand(1,4));
     }
     $remix->add($loop);
 }
-
+$remix->maxgain();
 $remix->x(4)->play();
 
 
