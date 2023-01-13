@@ -1,6 +1,9 @@
 remix
     frames: alternate between back and front
     $d/remixes/01.wav 02 03....
+    rmxmkosc $d 01
+    rmxmkfull $d 01
+    rmxmkall
     
 addfx IDX TYPE: pitch -80 pitch -80 | chop end | blank end | reverse end
 

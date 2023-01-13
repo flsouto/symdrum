@@ -26,6 +26,15 @@ foreach(array_keys($grouped) as $idx){
     $tracks[] = $dir."{$idx}_drm.wav";
 }
 
+if(is_dir($d=$dir."rmx/")){
+    foreach(glob($d."*.wav") as $f){
+        if(preg_match("/\d\d\.wav/",$f)){
+            $tracks[] = $f;
+        }
+    }
+}
+
+
 $tracklist = [];
 
 $album = null;
@@ -46,14 +55,14 @@ foreach($tracks as $f){
     if(substr($offset,1,1)==':'){
         $offset = "0$offset";
     }
-    $line = "$offset - ".basename($f);
+    $line = "$offset - ".basename(str_replace("rmx/","rmx_",$f));
     $tracklist[] = $line;
     echo $line."\n";
 }
 
 $tags = [
     "industrial","rhythmic noise", "ambient","experimental","soundtrack","power noise", "beats", "drums","symphonic",
-    "samples", "loops", "wav", "pack", "download", "breakbeats",  "patterns"
+    "samples", "loops", "wav", "pack", "download", "breakbeats",  "patterns", "remixes"
 ];
 shuffle($tags);
 $tags = array_unique($tags);
