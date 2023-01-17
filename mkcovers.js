@@ -60,6 +60,14 @@ async function main(){
             'BPM'
         );
 
+        let t = 35;
+        drm_img.setThickness(t);
+        t = 8;
+        drm_img.line(0, t, 1280, t, fc1);
+        drm_img.line(1280-t, t, 1280 -t, 720-t, fc1);
+        drm_img.line(1280, 720-t, 0, 720-t, fc1);
+        drm_img.line(t, 720-t, t, t, fc1);
+
         drm_img.saveJpeg(out_f);
         sym_img.destroy();
         drm_img.destroy();

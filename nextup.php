@@ -24,7 +24,7 @@ $next = '';
 if(empty($current)){
     $next = "01_sym.wav";
 } else if(strstr($current[0],'rmx')) {
-    preg_match("/rmx(\d\d)/",$current[0], $m);
+    preg_match("/rmx_(\d\d)/",$current[0], $m);
     $i = str_pad( ((int)$m[1]) + 1, 2, '0', STR_PAD_LEFT);
     $next = "rmx/{$i}.wav";
     $save_as = "rmx_{$i}.wav";

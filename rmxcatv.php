@@ -11,7 +11,7 @@ $w = function($str){
 };
 
 $files = [];
-$glob = glob($dir."*.mp4");
+$glob = glob($dir."[0-9][0-9].mp4");
 if(file_exists($f=$dir."../concatv.mp4")){
     array_unshift($glob, realpath($f));
 }
